@@ -1,0 +1,392 @@
+<!DOCTYPE HTML>
+<html lang="en-US" manifest="../manifest.appcache">
+    
+    <head prefix="og: http://ogp.me/ns# book: http://ogp.me/ns/book#">
+        
+        
+        <meta charset="UTF-8">
+        <title>Why Are There So Many MakeConnectComponent Events? | Analyzing Oztoc Data</title>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="briandk">
+        <meta name="description" content="In this book we walk you through a short analysis of some actual play data collected from our game: Oztoc.">
+        <meta name="keywords" content="gitbook,github" >
+        <meta name="generator" content="www.gitbook.io">
+
+        
+        <link rel="next" href="../data_analysis/visualizing_events_over_time.html" />
+        
+        
+        <link rel="prev" href="../data_analysis/visualizing_the_data.html" />
+        
+
+        <meta property="og:title" content="Why Are There So Many MakeConnectComponent Events? | Analyzing Oztoc Data">
+        <meta property="og:site_name" content="Analyzing Oztoc Data">
+        <meta property="og:type" content="book">
+        <meta property="og:locale" content="en_US">
+
+        <meta property="book:author" content="https://github.com/briandk">
+        <meta property="book:tag" content="GitBook">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+        
+    </head>
+    <body>
+        
+        
+
+        <link rel="stylesheet" href="../gitbook/style.css">
+        
+
+
+        
+    <div class="book" data-github="briandk/makescape-adage-gitbook" data-level="2.4" data-basepath=".." data-revision="1401755349243">
+    <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
+    
+    <a href="https://github.com/briandk/makescape-adage-gitbook" target="_blank" class="btn pull-left home-bookmark" aria-label="GitHub home"><i class="fa fa-bookmark-o"></i></a>
+    
+    <a href="#" class="btn pull-left toggle-search" aria-label="Toggle search"><i class="fa fa-search"></i></a>
+    <span id="font-settings-wrapper">
+        <a href="#" class="btn pull-left toggle-font-settings" aria-label="Toggle font settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="btn-group btn-block">
+        <button id="reduce-font-size" class="btn btn-default">A</button>
+        <button id="enlarge-font-size" class="btn btn-default">A</button>
+    </div>
+
+    <ul class="list-group font-family-list">
+        <li class="list-group-item" data-font="0">Serif</li>
+        <li class="list-group-item" data-font="1">Sans</li>
+    </ul>
+
+    <div class="btn-group btn-group-xs btn-block color-theme-list">
+        <button type="button" class="btn btn-default" id="color-theme-preview-0" data-theme="0">White</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-1" data-theme="1">Sepia</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-2" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </span>
+
+    <!-- Actions Right -->
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    
+
+    
+    <a href="https://github.com/briandk/makescape-adage-gitbook/stargazers" target="_blank" class="btn pull-right count-star hidden-xs"><i class="fa fa-star-o"></i> Star (<span>-</span>)</a>
+    <a href="https://github.com/briandk/makescape-adage-gitbook/watchers" target="_blank" class="btn pull-right count-watch hidden-xs"><i class="fa fa-eye"></i> Watch (<span>-</span>)</a>
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-spinner fa-spin"></i>
+        <a href="../" >Analyzing Oztoc Data</a>
+    </h1>
+</div>
+
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        <li>
+            <a href="https://github.com/briandk" target="blank" class="author-link">About the author</a>
+        </li>
+        
+
+        
+        
+        <li>
+            <a href="https://github.com/briandk/makescape-adage-gitbook/issues" target="blank"class="issues-link">Questions and Issues</a>
+        </li>
+        
+
+        
+        
+        <li>
+            <a href="https://github.com/briandk/makescape-adage-gitbook/edit/master/data_analysis/why_are_there_so_many_makeconnectcomponent_events.md" target="blank" class="contribute-link">Edit and Contribute</a>
+        </li>
+        
+
+        
+        <li class="divider"></li>
+        
+
+        <li data-level="0" data-path="index.html">
+            <a href="../"><i class="fa fa-check"></i> Introduction</a>
+        </li>
+        
+    
+        <li class="chapter " data-level="1" data-path="tools_we_use/README.html">
+            
+            <a href="../tools_we_use/README.html">
+                <i class="fa fa-check"></i> <b>1.</b> The Tools We Use
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="data_analysis/README.html">
+            
+            <a href="../data_analysis/README.html">
+                <i class="fa fa-check"></i> <b>2.</b> Data Analysis
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="data_analysis/article_1.html">
+            
+            <a href="../data_analysis/article_1.html">
+                <i class="fa fa-check"></i> <b>2.1.</b> Loading and Cleaning the Data
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="data_analysis/inspecting_the_data_sanity_checks.html">
+            
+            <a href="../data_analysis/inspecting_the_data_sanity_checks.html">
+                <i class="fa fa-check"></i> <b>2.2.</b> Inspecting the Data (Sanity Checks)
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="data_analysis/visualizing_the_data.html">
+            
+            <a href="../data_analysis/visualizing_the_data.html">
+                <i class="fa fa-check"></i> <b>2.3.</b> Exploring Events by Type
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="data_analysis/why_are_there_so_many_makeconnectcomponent_events.html">
+            
+            <a href="../data_analysis/why_are_there_so_many_makeconnectcomponent_events.html">
+                <i class="fa fa-check"></i> <b>2.4.</b> Why Are There So Many MakeConnectComponent Events?
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="data_analysis/visualizing_events_over_time.html">
+            
+            <a href="../data_analysis/visualizing_events_over_time.html">
+                <i class="fa fa-check"></i> <b>2.5.</b> Visualizing Events Over Time
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="data_analysis/working_with_time_deltas.html">
+            
+            <a href="../data_analysis/working_with_time_deltas.html">
+                <i class="fa fa-check"></i> <b>2.6.</b> Working with Time Deltas
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="data_analysis/visualizing_time_deltas.html">
+            
+            <a href="../data_analysis/visualizing_time_deltas.html">
+                <i class="fa fa-check"></i> <b>2.7.</b> Visualizing Time Deltas
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="http://www.gitbook.io/" target="blank" class="gitbook-link">Generated using GitBook</a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 66.66666666666667%;min-width: 55.55555555555556%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="../index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="../tools_we_use/README.html" title="The Tools We Use" class="chapter done new-chapter" data-progress="1" style="left: 11.11111111111111%;"></a>
+    
+        <a href="../data_analysis/README.html" title="Data Analysis" class="chapter done new-chapter" data-progress="2" style="left: 22.22222222222222%;"></a>
+    
+        <a href="../data_analysis/article_1.html" title="Loading and Cleaning the Data" class="chapter done " data-progress="2.1" style="left: 33.333333333333336%;"></a>
+    
+        <a href="../data_analysis/inspecting_the_data_sanity_checks.html" title="Inspecting the Data (Sanity Checks)" class="chapter done " data-progress="2.2" style="left: 44.44444444444444%;"></a>
+    
+        <a href="../data_analysis/visualizing_the_data.html" title="Exploring Events by Type" class="chapter done " data-progress="2.3" style="left: 55.55555555555556%;"></a>
+    
+        <a href="../data_analysis/why_are_there_so_many_makeconnectcomponent_events.html" title="Why Are There So Many MakeConnectComponent Events?" class="chapter done " data-progress="2.4" style="left: 66.66666666666667%;"></a>
+    
+        <a href="../data_analysis/visualizing_events_over_time.html" title="Visualizing Events Over Time" class="chapter  " data-progress="2.5" style="left: 77.77777777777777%;"></a>
+    
+        <a href="../data_analysis/working_with_time_deltas.html" title="Working with Time Deltas" class="chapter  " data-progress="2.6" style="left: 88.88888888888889%;"></a>
+    
+        <a href="../data_analysis/visualizing_time_deltas.html" title="Visualizing Time Deltas" class="chapter  " data-progress="2.7" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_8">
+                    
+                        <h1 id="why-are-there-so-many-makeconnectcomponent-events-">Why Are There So Many MakeConnectComponent Events?</h1>
+<p>I mentioned in the last section that there&#39;s a huge problem with our data. Let&#39;s take a look again at the counts of different types of events, but this time we&#39;ll focus on the top five most frequent events:</p>
+<pre><code class="lang-python">topFiveMostFrequentEvents = ms.groupby(<span class="hljs-string">'key'</span>).count().sort(columns=[<span class="hljs-string">'timestamp'</span>], ascending=<span class="hljs-keyword">False</span>)[:<span class="hljs-number">5</span>]
+topFiveMostFrequentEvents[<span class="hljs-string">'timestamp'</span>]
+</code></pre>
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:right;"/>
+</colgroup>
+
+<thead>
+<tr>
+    <th style="text-align:left;">key</th>
+    <th style="text-align:right;">count</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+    <td style="text-align:left;">MakeConnectComponent</td>
+    <td style="text-align:right;">2609</td>
+</tr>
+<tr>
+    <td style="text-align:left;">MakeSnapshot</td>
+    <td style="text-align:right;">2086</td>
+</tr>
+<tr>
+    <td style="text-align:left;">MakeDisconnectComponent</td>
+    <td style="text-align:right;">943</td>
+</tr>
+<tr>
+    <td style="text-align:left;">MakeAddComponent</td>
+    <td style="text-align:right;">891</td>
+</tr>
+<tr>
+    <td style="text-align:left;">MakeRemoveComponent</td>
+    <td style="text-align:right;">840 </td>
+</tr>
+</tbody>
+</table>
+
+<p>In our implementation of events, <code>MakeConnectComponent</code> should be triggered once the system detects that two circuit elements have become connected (say, when a player bumps a resistor and a battery together). <code>MakeDisconnectComponent</code> should be triggered once the system detects that two connected elements have become disconnected (say, when a player swipes a finger across a wire to cut it.)</p>
+<p>That leads to Problem 1</p>
+<h3 id="problem-1-there-are-more-connect-events-than-there-are-disconnect-events">Problem 1 - There are more connect events than there are disconnect events</h3>
+<p>And not just a few more, <em>way</em> more. Almost three times more.</p>
+<p>$\frac{2609}{943} \approx 2.77$</p>
+<p>If you think about it, this doesn&#39;t make sense at all.</p>
+<p>In our game, each block has a lone positive terminal and a lone negative terminal. And, each terminal only accepts a maximum of one connection for simplicity. When players add blocks to the table, the blocks don&#39;t start as being not connected to anything. The first <code>MakeConnectComponent</code> event <em>should</em> happen when two free terminals from two different blocks get bumped together. And, if two terminals are connected, they can&#39;t get connected to other things without getting disconnected first. So, we should expect at least something close to parity: there should be about as many disconnect events as there are connect events. Otherwise, how can a bunch of connected terminals keep connecting to other things? (Again, remember that each terminal should accept a maximum of one connection.)</p>
+<p>So, that&#39;s pretty weird. Also, possibly very bad. But, it gets even worse when you consider Problem 2.</p>
+<h3 id="problem-2-there-are-more-connect-events-than-there-are-snapshot-events">Problem 2 - There are more connect events than there are snapshot events</h3>
+<p>In our game, we built an event called <code>MakeSnapshot</code> that takes a snapshot of the entire state of the board at regular intervals. We did that because we knew not all actions in the game should generate events. For example, if we recorded every single time any block changed its position, that would be <em>way</em> too much data. On the other hand, we need to know when players move blocks even if those movements don&#39;t generate big game events (like completing a circuit). So, we compromised. Every second, the game stores a snapshot of information about the state of the board, and that event is called <code>MakeSnapshot</code>.</p>
+<p>If you look at the table above or this barchart, you&#39;ll notice that <code>MakeSnapshot</code> comes in second in our Top 5 Most Frequent Events. And, it&#39;s not a small margin, either. <code>MakeConnectComponent</code> is beating it by 25%. That is a Very Weird Thing.</p>
+<p><img src="../assets/barChart1.png" alt="Bar chart of events by type"></p>
+<p>If we assume that the snapshots are reliably firing every second, that means that <em>on average, the system is registering block-to-block connections more than once per second.</em> If all that data were user-generated, that means that over a period of about 44 total minutes of gameplay, kids were connecting blocks at a rate of <em>more than one block per second, every second</em> for the entirety of the 44 minutes.</p>
+<p>To put that in perspective one more way:</p>
+<ul>
+<li>If you played <a href="https://www.youtube.com/watch?v=cU-eAzNp5Hw" target="_blank">The Lion Sleeps Tonight (Wimoweh)</a> by The Tokens;</li>
+<li>On repeat;</li>
+<li><strong>17</strong> consecutive times;</li>
+<li>And you snapped your fingers to the beat (60bpm) the entire time;</li>
+<li><strong>Each snap</strong> would represent two circuit elements being connected;</li>
+<li>For <strong>44</strong> non-stop, consecutive minutes</li>
+</ul>
+<p>Rather than assuming children are connecting circuit elements at a ludicrously high rate (Problem 2), which also would seem physically impossible (Problem 1), it seems more likely that there&#39;s a problem with the game&#39;s data logging that&#39;s revealed by our data. So, let&#39;s go to the next section and explore a method for checking it out using time deltas.</p>
+
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../data_analysis/visualizing_the_data.html" class="navigation navigation-prev " aria-label="Previous page: Exploring Events by Type"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../data_analysis/visualizing_events_over_time.html" class="navigation navigation-next " aria-label="Next page: Visualizing Events Over Time"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/mode-javascript.js"></script>
+        <script src="../gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+        <script src="../gitbook/app.js"></script>
+        
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-mixpanel/plugin.js"></script>
+    
+
+    
+    <script src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

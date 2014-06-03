@@ -1,0 +1,344 @@
+<!DOCTYPE HTML>
+<html lang="en-US" manifest="./manifest.appcache">
+    
+    <head prefix="og: http://ogp.me/ns# book: http://ogp.me/ns/book#">
+        
+        
+        <meta charset="UTF-8">
+        <title>Introduction | Analyzing Oztoc Data</title>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="briandk">
+        <meta name="description" content="In this book we walk you through a short analysis of some actual play data collected from our game: Oztoc.">
+        <meta name="keywords" content="gitbook,github" >
+        <meta name="generator" content="www.gitbook.io">
+
+        
+        <link rel="next" href="./tools_we_use/README.html" />
+        
+        
+
+        <meta property="og:title" content="Introduction | Analyzing Oztoc Data">
+        <meta property="og:site_name" content="Analyzing Oztoc Data">
+        <meta property="og:type" content="book">
+        <meta property="og:locale" content="en_US">
+
+        <meta property="book:author" content="https://github.com/briandk">
+        <meta property="book:tag" content="GitBook">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+        
+    </head>
+    <body>
+        
+        
+
+        <link rel="stylesheet" href="gitbook/style.css">
+        
+
+
+        
+    <div class="book" data-github="briandk/makescape-adage-gitbook" data-level="0" data-basepath="." data-revision="1401755349243">
+    <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
+    
+    <a href="https://github.com/briandk/makescape-adage-gitbook" target="_blank" class="btn pull-left home-bookmark" aria-label="GitHub home"><i class="fa fa-bookmark-o"></i></a>
+    
+    <a href="#" class="btn pull-left toggle-search" aria-label="Toggle search"><i class="fa fa-search"></i></a>
+    <span id="font-settings-wrapper">
+        <a href="#" class="btn pull-left toggle-font-settings" aria-label="Toggle font settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="btn-group btn-block">
+        <button id="reduce-font-size" class="btn btn-default">A</button>
+        <button id="enlarge-font-size" class="btn btn-default">A</button>
+    </div>
+
+    <ul class="list-group font-family-list">
+        <li class="list-group-item" data-font="0">Serif</li>
+        <li class="list-group-item" data-font="1">Sans</li>
+    </ul>
+
+    <div class="btn-group btn-group-xs btn-block color-theme-list">
+        <button type="button" class="btn btn-default" id="color-theme-preview-0" data-theme="0">White</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-1" data-theme="1">Sepia</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-2" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </span>
+
+    <!-- Actions Right -->
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    
+
+    
+    <a href="https://github.com/briandk/makescape-adage-gitbook/stargazers" target="_blank" class="btn pull-right count-star hidden-xs"><i class="fa fa-star-o"></i> Star (<span>-</span>)</a>
+    <a href="https://github.com/briandk/makescape-adage-gitbook/watchers" target="_blank" class="btn pull-right count-watch hidden-xs"><i class="fa fa-eye"></i> Watch (<span>-</span>)</a>
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-spinner fa-spin"></i>
+        <a href="./" >Analyzing Oztoc Data</a>
+    </h1>
+</div>
+
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        <li>
+            <a href="https://github.com/briandk" target="blank" class="author-link">About the author</a>
+        </li>
+        
+
+        
+        
+        <li>
+            <a href="https://github.com/briandk/makescape-adage-gitbook/issues" target="blank"class="issues-link">Questions and Issues</a>
+        </li>
+        
+
+        
+        
+        <li>
+            <a href="https://github.com/briandk/makescape-adage-gitbook/edit/master/README.md" target="blank" class="contribute-link">Edit and Contribute</a>
+        </li>
+        
+
+        
+        <li class="divider"></li>
+        
+
+        <li data-level="0" data-path="index.html">
+            <a href="./"><i class="fa fa-check"></i> Introduction</a>
+        </li>
+        
+    
+        <li class="chapter " data-level="1" data-path="tools_we_use/README.html">
+            
+            <a href="./tools_we_use/README.html">
+                <i class="fa fa-check"></i> <b>1.</b> The Tools We Use
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="data_analysis/README.html">
+            
+            <a href="./data_analysis/README.html">
+                <i class="fa fa-check"></i> <b>2.</b> Data Analysis
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="data_analysis/article_1.html">
+            
+            <a href="./data_analysis/article_1.html">
+                <i class="fa fa-check"></i> <b>2.1.</b> Loading and Cleaning the Data
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="data_analysis/inspecting_the_data_sanity_checks.html">
+            
+            <a href="./data_analysis/inspecting_the_data_sanity_checks.html">
+                <i class="fa fa-check"></i> <b>2.2.</b> Inspecting the Data (Sanity Checks)
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="data_analysis/visualizing_the_data.html">
+            
+            <a href="./data_analysis/visualizing_the_data.html">
+                <i class="fa fa-check"></i> <b>2.3.</b> Exploring Events by Type
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="data_analysis/why_are_there_so_many_makeconnectcomponent_events.html">
+            
+            <a href="./data_analysis/why_are_there_so_many_makeconnectcomponent_events.html">
+                <i class="fa fa-check"></i> <b>2.4.</b> Why Are There So Many MakeConnectComponent Events?
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="data_analysis/visualizing_events_over_time.html">
+            
+            <a href="./data_analysis/visualizing_events_over_time.html">
+                <i class="fa fa-check"></i> <b>2.5.</b> Visualizing Events Over Time
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="data_analysis/working_with_time_deltas.html">
+            
+            <a href="./data_analysis/working_with_time_deltas.html">
+                <i class="fa fa-check"></i> <b>2.6.</b> Working with Time Deltas
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="data_analysis/visualizing_time_deltas.html">
+            
+            <a href="./data_analysis/visualizing_time_deltas.html">
+                <i class="fa fa-check"></i> <b>2.7.</b> Visualizing Time Deltas
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="http://www.gitbook.io/" target="blank" class="gitbook-link">Generated using GitBook</a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 0%;min-width: 0%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="./index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="./tools_we_use/README.html" title="The Tools We Use" class="chapter  new-chapter" data-progress="1" style="left: 11.11111111111111%;"></a>
+    
+        <a href="./data_analysis/README.html" title="Data Analysis" class="chapter  new-chapter" data-progress="2" style="left: 22.22222222222222%;"></a>
+    
+        <a href="./data_analysis/article_1.html" title="Loading and Cleaning the Data" class="chapter  " data-progress="2.1" style="left: 33.333333333333336%;"></a>
+    
+        <a href="./data_analysis/inspecting_the_data_sanity_checks.html" title="Inspecting the Data (Sanity Checks)" class="chapter  " data-progress="2.2" style="left: 44.44444444444444%;"></a>
+    
+        <a href="./data_analysis/visualizing_the_data.html" title="Exploring Events by Type" class="chapter  " data-progress="2.3" style="left: 55.55555555555556%;"></a>
+    
+        <a href="./data_analysis/why_are_there_so_many_makeconnectcomponent_events.html" title="Why Are There So Many MakeConnectComponent Events?" class="chapter  " data-progress="2.4" style="left: 66.66666666666667%;"></a>
+    
+        <a href="./data_analysis/visualizing_events_over_time.html" title="Visualizing Events Over Time" class="chapter  " data-progress="2.5" style="left: 77.77777777777777%;"></a>
+    
+        <a href="./data_analysis/working_with_time_deltas.html" title="Working with Time Deltas" class="chapter  " data-progress="2.6" style="left: 88.88888888888889%;"></a>
+    
+        <a href="./data_analysis/visualizing_time_deltas.html" title="Visualizing Time Deltas" class="chapter  " data-progress="2.7" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_1">
+                    
+                        <h1 id="analyzing-oztoc-data">Analyzing Oztoc Data</h1>
+<p>In this book we walk you through a short analysis of some actual play data collected from our game: Oztoc.</p>
+<h3 id="what-is-oztoc-">What is Oztoc?</h3>
+<p>An expedition in Mexico reveals an uncharted lagoon teeming with life, and it&#39;s up to junior explorers to learn more about its mysteries. Enter Oztoc: an immersive world where children design circuits to lure bioluminescent creatures from the deep.</p>
+<p><img src="assets/NewSpeciesDiscovered.jpg" alt="Newspaper headline that reads &quot;New Species Discovered&quot;"></p>
+<p><img src="assets/schematic.jpg" alt="A schematic of circuits"></p>
+<p><em>Image Credits: Learning Games Network</em></p>
+<p>The game is a first-of-its kind museum installation, combining a state-of-the-art multitouch tabletop display with tactile physical blocks. The result is a hybrid museum game where students touch physical blocks to create virtual in-game circuits.</p>
+<p><img src="assets/table1.jpg" alt="Image of the Oztoc table at NYSCI"></p>
+<p><em>Image Credit: Insider Images/Andrew Kelly</em></p>
+<h3 id="oztoc-is-a-research-environment">Oztoc is a Research Environment</h3>
+<p>Oztoc is an rich environment for research on how children learn programming and design. Three of its features are key to that research:</p>
+<ol>
+<li><strong>Rapid Exploration</strong>: While physical components mean kids can see and touch circuit parts, using virtual wires lets them quickly build, test, and iterate over the circuit prototypes.</li>
+<li><strong>In-Game Telemetry</strong>: Oztoc is built on the <a href="http://adageapi.org" target="_blank">ADAGE</a> framework, which lets us collect deep information in real-time on children&#39;s play behavior</li>
+<li><strong>Multiple Views</strong>: The museum installation itself is instrumented with multiple video cameras to get a complete view of the action at the table. By coordinating ADAGE telemetry data with video of how students play, Oztoc represents a first-of-its-kind opportunity to understand design-based learning in a museum setting.</li>
+</ol>
+<h3 id="oztoc-is-a-partnership">Oztoc is a Partnership</h3>
+<p>Oztoc is a National Science Foundation funded collaboration between the <a href="http://gameslearningsociety.org/" target="_blank">Games+Learning+Society Group</a> at the University of Wisconsin-Madison, <a href="http://nysci.org/" target="_blank">The New York Hall of Science (NYSCI)</a>, and the <a href="http://learninggamesnetwork.org/" target="_blank">Learning Games Network</a>. Co-led by Principal Investigators <a href="http://www.cs.uic.edu/~llyons/" target="_blank">Leilah Lyons</a> (NYSCI) and <a href="http://gameslearningsociety.org/bio_matthew.php" target="_blank">Matthew Berland</a> (UW-Madison), the project team combines learning science researchers, game designers, and museum specialists.</p>
+<h3 id="oztoc-collects-in-game-play-data">Oztoc Collects in-Game Play Data</h3>
+<p>Using the <a href="http://adageapi.org/" target="_blank">ADAGE</a> framework, we&#39;re able to log discrete events as they happen in the game. In this test case analysis, we&#39;ll mainly be concerned with with events that happen when players connect and disconnect circuit components.</p>
+
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        
+        <a href="./tools_we_use/README.html" class="navigation navigation-next navigation-unique" aria-label="Next page: The Tools We Use"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/mode-javascript.js"></script>
+        <script src="gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+        <script src="gitbook/app.js"></script>
+        
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-mixpanel/plugin.js"></script>
+    
+
+    
+    <script src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE HTML>
+<html lang="en-US" manifest="../manifest.appcache">
+    
+    <head prefix="og: http://ogp.me/ns# book: http://ogp.me/ns/book#">
+        
+        
+        <meta charset="UTF-8">
+        <title>Inspecting the Data (Sanity Checks) | Analyzing Oztoc Data</title>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="briandk">
+        <meta name="description" content="In this book we walk you through a short analysis of some actual play data collected from our game: Oztoc.">
+        <meta name="keywords" content="gitbook,github" >
+        <meta name="generator" content="www.gitbook.io">
+
+        
+        <link rel="next" href="../data_analysis/visualizing_the_data.html" />
+        
+        
+        <link rel="prev" href="../data_analysis/article_1.html" />
+        
+
+        <meta property="og:title" content="Inspecting the Data (Sanity Checks) | Analyzing Oztoc Data">
+        <meta property="og:site_name" content="Analyzing Oztoc Data">
+        <meta property="og:type" content="book">
+        <meta property="og:locale" content="en_US">
+
+        <meta property="book:author" content="https://github.com/briandk">
+        <meta property="book:tag" content="GitBook">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+        
+    </head>
+    <body>
+        
+        
+
+        <link rel="stylesheet" href="../gitbook/style.css">
+        
+
+
+        
+    <div class="book" data-github="briandk/makescape-adage-gitbook" data-level="2.2" data-basepath=".." data-revision="1401755349243">
+    <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
+    
+    <a href="https://github.com/briandk/makescape-adage-gitbook" target="_blank" class="btn pull-left home-bookmark" aria-label="GitHub home"><i class="fa fa-bookmark-o"></i></a>
+    
+    <a href="#" class="btn pull-left toggle-search" aria-label="Toggle search"><i class="fa fa-search"></i></a>
+    <span id="font-settings-wrapper">
+        <a href="#" class="btn pull-left toggle-font-settings" aria-label="Toggle font settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="btn-group btn-block">
+        <button id="reduce-font-size" class="btn btn-default">A</button>
+        <button id="enlarge-font-size" class="btn btn-default">A</button>
+    </div>
+
+    <ul class="list-group font-family-list">
+        <li class="list-group-item" data-font="0">Serif</li>
+        <li class="list-group-item" data-font="1">Sans</li>
+    </ul>
+
+    <div class="btn-group btn-group-xs btn-block color-theme-list">
+        <button type="button" class="btn btn-default" id="color-theme-preview-0" data-theme="0">White</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-1" data-theme="1">Sepia</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-2" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </span>
+
+    <!-- Actions Right -->
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    
+
+    
+    <a href="https://github.com/briandk/makescape-adage-gitbook/stargazers" target="_blank" class="btn pull-right count-star hidden-xs"><i class="fa fa-star-o"></i> Star (<span>-</span>)</a>
+    <a href="https://github.com/briandk/makescape-adage-gitbook/watchers" target="_blank" class="btn pull-right count-watch hidden-xs"><i class="fa fa-eye"></i> Watch (<span>-</span>)</a>
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-spinner fa-spin"></i>
+        <a href="../" >Analyzing Oztoc Data</a>
+    </h1>
+</div>
+
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        <li>
+            <a href="https://github.com/briandk" target="blank" class="author-link">About the author</a>
+        </li>
+        
+
+        
+        
+        <li>
+            <a href="https://github.com/briandk/makescape-adage-gitbook/issues" target="blank"class="issues-link">Questions and Issues</a>
+        </li>
+        
+
+        
+        
+        <li>
+            <a href="https://github.com/briandk/makescape-adage-gitbook/edit/master/data_analysis/inspecting_the_data_sanity_checks.md" target="blank" class="contribute-link">Edit and Contribute</a>
+        </li>
+        
+
+        
+        <li class="divider"></li>
+        
+
+        <li data-level="0" data-path="index.html">
+            <a href="../"><i class="fa fa-check"></i> Introduction</a>
+        </li>
+        
+    
+        <li class="chapter " data-level="1" data-path="tools_we_use/README.html">
+            
+            <a href="../tools_we_use/README.html">
+                <i class="fa fa-check"></i> <b>1.</b> The Tools We Use
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="data_analysis/README.html">
+            
+            <a href="../data_analysis/README.html">
+                <i class="fa fa-check"></i> <b>2.</b> Data Analysis
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="data_analysis/article_1.html">
+            
+            <a href="../data_analysis/article_1.html">
+                <i class="fa fa-check"></i> <b>2.1.</b> Loading and Cleaning the Data
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="data_analysis/inspecting_the_data_sanity_checks.html">
+            
+            <a href="../data_analysis/inspecting_the_data_sanity_checks.html">
+                <i class="fa fa-check"></i> <b>2.2.</b> Inspecting the Data (Sanity Checks)
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="data_analysis/visualizing_the_data.html">
+            
+            <a href="../data_analysis/visualizing_the_data.html">
+                <i class="fa fa-check"></i> <b>2.3.</b> Exploring Events by Type
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="data_analysis/why_are_there_so_many_makeconnectcomponent_events.html">
+            
+            <a href="../data_analysis/why_are_there_so_many_makeconnectcomponent_events.html">
+                <i class="fa fa-check"></i> <b>2.4.</b> Why Are There So Many MakeConnectComponent Events?
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="data_analysis/visualizing_events_over_time.html">
+            
+            <a href="../data_analysis/visualizing_events_over_time.html">
+                <i class="fa fa-check"></i> <b>2.5.</b> Visualizing Events Over Time
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="data_analysis/working_with_time_deltas.html">
+            
+            <a href="../data_analysis/working_with_time_deltas.html">
+                <i class="fa fa-check"></i> <b>2.6.</b> Working with Time Deltas
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="data_analysis/visualizing_time_deltas.html">
+            
+            <a href="../data_analysis/visualizing_time_deltas.html">
+                <i class="fa fa-check"></i> <b>2.7.</b> Visualizing Time Deltas
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="http://www.gitbook.io/" target="blank" class="gitbook-link">Generated using GitBook</a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 44.44444444444444%;min-width: 33.333333333333336%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="../index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="../tools_we_use/README.html" title="The Tools We Use" class="chapter done new-chapter" data-progress="1" style="left: 11.11111111111111%;"></a>
+    
+        <a href="../data_analysis/README.html" title="Data Analysis" class="chapter done new-chapter" data-progress="2" style="left: 22.22222222222222%;"></a>
+    
+        <a href="../data_analysis/article_1.html" title="Loading and Cleaning the Data" class="chapter done " data-progress="2.1" style="left: 33.333333333333336%;"></a>
+    
+        <a href="../data_analysis/inspecting_the_data_sanity_checks.html" title="Inspecting the Data (Sanity Checks)" class="chapter done " data-progress="2.2" style="left: 44.44444444444444%;"></a>
+    
+        <a href="../data_analysis/visualizing_the_data.html" title="Exploring Events by Type" class="chapter  " data-progress="2.3" style="left: 55.55555555555556%;"></a>
+    
+        <a href="../data_analysis/why_are_there_so_many_makeconnectcomponent_events.html" title="Why Are There So Many MakeConnectComponent Events?" class="chapter  " data-progress="2.4" style="left: 66.66666666666667%;"></a>
+    
+        <a href="../data_analysis/visualizing_events_over_time.html" title="Visualizing Events Over Time" class="chapter  " data-progress="2.5" style="left: 77.77777777777777%;"></a>
+    
+        <a href="../data_analysis/working_with_time_deltas.html" title="Working with Time Deltas" class="chapter  " data-progress="2.6" style="left: 88.88888888888889%;"></a>
+    
+        <a href="../data_analysis/visualizing_time_deltas.html" title="Visualizing Time Deltas" class="chapter  " data-progress="2.7" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_4">
+                    
+                        <h1 id="inspecting-the-data">Inspecting the Data</h1>
+<h3 id="how-much-data-is-there-">How Much Data Is There?</h3>
+<p>One of the first things I&#39;ll do is check the list of columns that our data comes with.</p>
+<pre><code class="lang-python">ms.columns
+</code></pre>
+<p>Which gives us the output</p>
+<pre><code class="lang-python">Index([<span class="hljs-string">u'_id'</span>, <span class="hljs-string">u'ada_base_types'</span>, <span class="hljs-string">u'adage_version'</span>, <span class="hljs-string">u'application_name'</span>, <span class="hljs-string">u'application_version'</span>, <span class="hljs-string">u'board_mode'</span>, <span class="hljs-string">u'component_list'</span>, <span class="hljs-string">u'created_at'</span>, <span class="hljs-string">u'deviceInfo'</span>, <span class="hljs-string">u'fish'</span>, <span class="hljs-string">u'fish_list'</span>, <span class="hljs-string">u'game'</span>, <span class="hljs-string">u'game_id'</span>, <span class="hljs-string">u'key'</span>, <span class="hljs-string">u'mode_name'</span>, <span class="hljs-string">u'num_batteries'</span>, <span class="hljs-string">u'num_leds'</span>, <span class="hljs-string">u'num_resistors'</span>, <span class="hljs-string">u'num_timers'</span>, <span class="hljs-string">u'player_name'</span>, <span class="hljs-string">u'player_names'</span>, <span class="hljs-string">u'playspace_id'</span>, <span class="hljs-string">u'playspace_ids'</span>, <span class="hljs-string">u'reason'</span>, <span class="hljs-string">u'resistance'</span>, <span class="hljs-string">u'session_token'</span>, <span class="hljs-string">u'timed_out'</span>, <span class="hljs-string">u'timestamp'</span>, <span class="hljs-string">u'updated_at'</span>, <span class="hljs-string">u'user_id'</span>, <span class="hljs-string">u'virtual_context'</span>, <span class="hljs-string">u'visability_mode'</span>, <span class="hljs-string">u'voltage'</span>, <span class="hljs-string">u'human-readable-timestamps'</span>, <span class="hljs-string">u'human-readable-timestamp'</span>], dtype=<span class="hljs-string">'object'</span>)
+</code></pre>
+<p>Whoa! That is <a href="http://hyperboleandahalf.blogspot.com/2010/04/alot-is-better-than-you-at-everything.html" target="_blank">alot of columns</a>. 33 columns, to be exact. You might be wondering why each column name starts with a &quot;u,&quot; as in <code>u&#39;num_leds&#39;</code> and <code>u&#39;_id</code>. That&#39;s actually because internally, <a href="http://www.diveintopython3.net/strings.html#one-ring-to-rule-them-all" target="_blank">Python is representing those strings as Unicode strings</a> and it&#39;s <a href="https://docs.python.org/2/howto/unicode.html#the-unicode-type" target="_blank">letting us know</a>.</p>
+<p>We can double-check exactly how many columns are in our data by calling Python&#39;s function for determining the length of a collection:</p>
+<pre><code class="lang-python">len(ms.columns) <span class="hljs-comment"># returns 33</span>
+</code></pre>
+<p>But we should also check how many rows (in this case, how many distinct gameplay events) we have in our dataset.</p>
+<pre><code class="lang-python">len(ms) <span class="hljs-comment"># returns 8505</span>
+</code></pre>
+<p>Phew! 8505 rows of data.</p>
+<h3 id="checking-the-first-few-rows">Checking the First Few Rows</h3>
+<p>Now let&#39;s check the first few rows of data to make sure they look OK. Specifically, we&#39;ll want to check what types of events they were and when they happened. In our data, the event type is stored in a column named <code>key</code>, and the time is recorded in the <code>timestamp</code> column as a <a href="http://en.wikipedia.org/wiki/Unix_epoch" target="_blank">UNIX Epoch timestamp</a> in milliseconds.</p>
+<p>Thankfully, pandas dataframes have a handy little method called <code>head()</code>, which we can use to fetch the first $n$ rows of data. In the statement below we&#39;re calling <code>head()</code> on our <code>ms</code> dataframe, then we&#39;re indexing an additional list of columns to select just the columns we want; in this case <code>key</code> and <code>timestamp</code></p>
+<pre><code class="lang-python">columns = [<span class="hljs-string">'key'</span>, <span class="hljs-string">'timestamp'</span>]
+ms.head(n=<span class="hljs-number">5</span>)[columns]
+</code></pre>
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+    <th style="text-align:left;"></th>
+    <th style="text-align:left;">key</th>
+    <th style="text-align:left;">timestamp</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+    <td style="text-align:left;">0</td>
+    <td style="text-align:left;">ADAGEStartSession</td>
+    <td style="text-align:left;">1398178271860</td>
+</tr>
+<tr>
+    <td style="text-align:left;">1</td>
+    <td style="text-align:left;">ADAGEStartSession</td>
+    <td style="text-align:left;">1398190767768</td>
+</tr>
+<tr>
+    <td style="text-align:left;">2</td>
+    <td style="text-align:left;">ADAGEStartSession</td>
+    <td style="text-align:left;">1398191616469</td>
+</tr>
+<tr>
+    <td style="text-align:left;">3</td>
+    <td style="text-align:left;">ADAGEStartSession</td>
+    <td style="text-align:left;">1398192512628</td>
+</tr>
+<tr>
+    <td style="text-align:left;">4</td>
+    <td style="text-align:left;">ADAGEStartSession</td>
+    <td style="text-align:left;">1398192887546</td>
+</tr>
+</tbody>
+</table>
+
+<p>What&#39;s less-than-helpful right now is that those timestamps are just raw integers. We want to make sure those integers actually represent times when data could reasonably have been collected (and not, say, January of the year 47532, which actually happened once).</p>
+<p>Thankfully, pandas comes with a function that can convert UNIX Epoch Time integers into human-recognizable dates. In this case, what we&#39;ll do is create a new column called <code>human-readable-timestamps</code> by applying the pandas <code>Timestamp()</code> function to our existing integers. Then we&#39;ll check the data.</p>
+<pre><code class="lang-python">ms[<span class="hljs-string">'human-readable-timestamp'</span>] = ms.timestamp.apply(<span class="hljs-keyword">lambda</span> x: pd.Timestamp(x, unit=<span class="hljs-string">'ms'</span>))
+columns = [<span class="hljs-string">'key'</span>, <span class="hljs-string">'timestamp'</span>, <span class="hljs-string">'human-readable-timestamp'</span>]
+ms[columns].head()
+</code></pre>
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+    <th style="text-align:left;"></th>
+    <th style="text-align:left;">key</th>
+    <th style="text-align:left;">timestamp</th>
+    <th style="text-align:left;">human-readable-timestamp</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+    <td style="text-align:left;">0</td>
+    <td style="text-align:left;">ADAGEStartSession</td>
+    <td style="text-align:left;">1398178271860</td>
+    <td style="text-align:left;">2014&#8211;04&#8211;22 14:51:11.860000</td>
+</tr>
+<tr>
+    <td style="text-align:left;">1</td>
+    <td style="text-align:left;">ADAGEStartSession</td>
+    <td style="text-align:left;">1398190767768</td>
+    <td style="text-align:left;">2014&#8211;04&#8211;22 18:19:27.768000</td>
+</tr>
+<tr>
+    <td style="text-align:left;">2</td>
+    <td style="text-align:left;">ADAGEStartSession</td>
+    <td style="text-align:left;">1398191616469</td>
+    <td style="text-align:left;">2014&#8211;04&#8211;22 18:33:36.469000</td>
+</tr>
+<tr>
+    <td style="text-align:left;">3</td>
+    <td style="text-align:left;">ADAGEStartSession</td>
+    <td style="text-align:left;">1398192512628</td>
+    <td style="text-align:left;">2014&#8211;04&#8211;22 18:48:32.628000</td>
+</tr>
+<tr>
+    <td style="text-align:left;">4</td>
+    <td style="text-align:left;">ADAGEStartSession</td>
+    <td style="text-align:left;">1398192887546</td>
+    <td style="text-align:left;">2014&#8211;04&#8211;22 18:54:47.546000</td>
+</tr>
+</tbody>
+</table>
+
+<p>Looking good! Our data seems to have loaded sensibly, and now it&#39;s time for some basic analysis.</p>
+
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../data_analysis/article_1.html" class="navigation navigation-prev " aria-label="Previous page: Loading and Cleaning the Data"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../data_analysis/visualizing_the_data.html" class="navigation navigation-next " aria-label="Next page: Exploring Events by Type"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/mode-javascript.js"></script>
+        <script src="../gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+        <script src="../gitbook/app.js"></script>
+        
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-mixpanel/plugin.js"></script>
+    
+
+    
+    <script src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
