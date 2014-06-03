@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="briandk/makescape-adage-gitbook" data-level="2.6" data-basepath=".." data-revision="1401761310633">
+    <div class="book" data-github="briandk/makescape-adage-gitbook" data-level="2.6" data-basepath=".." data-revision="1401761736212">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -280,7 +280,7 @@
                         <h1 id="working-with-time-deltas">Working with Time Deltas</h1>
 <p>We&#39;re going to compute the time difference between successive events, which I&#39;m calling <em>time deltas</em>. It&#39;s worth taking a second to think about how the delta is defined:</p>
 <p>For the $i$th event, the $\Delta$ value is given by the simple equation below, where $t_i$ is the timestamp of the $i$ th event: </p>
-<object type="image/svg+xml" data="../assets/equation1.svg">Your browser does not support SVG</object>
+<object type="image/svg+xml" data="../assets/equation1.svg" height="100" width="200">Your browser does not support SVG</object>
 
 <p>As a result, the very first event $(i = 0)$ in a series will have a diff value of <code>NaN</code> or <code>NaT</code> (Not a Time), because the -1st event is undefined. But the second event will have a diff value of (Time of Second event - Time of First event). The very last event will also have a value: (Time of Last event - Time of Penultimate event).</p>
 <p>The handy thing about pandas is that every data series (and a column counts as data series) has a <code>diff()</code> method, which does exactly what we want: it computes successive pairwise differences between events. If we apply the <code>.diff()</code> function to our timestamps, we&#39;ll have exactly what we want: a column of numbers where each number represents the time elapsed since the event that came before.</p>
