@@ -1,0 +1,3 @@
+[submodule "cplorg"]
+	path = cplorg
+	url = https://github.com/CPL-UW/complexplayorg.git
